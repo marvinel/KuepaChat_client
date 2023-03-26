@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+# Getting Started KuepaChat Cliente
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es un proyecto ReactJs que simula un streaming con un chat a tiempo real que cuenta con cuenta con un servicio de registro e inicio de sesión.
+Se necesita estar logueado para poder acceder al chat.
 
-## Available Scripts
+## Pasos para correr el Proyecto
 
-In the project directory, you can run:
+En el directorio del proyecto correr el siguiente comando (es necesario que el servidor este corriendo para el correcto funcionamiento del proyecto [http://localhost:3000](http://localhost:3000)):
 
 ### `npm start`
 
