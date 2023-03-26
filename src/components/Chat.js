@@ -7,6 +7,8 @@ import imgMod from "../assets/insignia.png";
 
 import Card from "react-bootstrap/Card";
 
+
+
 const socket = io("http://localhost:4000");
 
 const Chat = () => {
@@ -22,7 +24,7 @@ const Chat = () => {
   const [firstTime, setFirstTime] = useState(false);
 
   useEffect(() => {
-    const user = sessionStorage.getItem("sessionToken");
+    const user = localStorage.getItem("sessionToken");
 
     if (!user) {
       navigate("/login");
@@ -70,7 +72,7 @@ const Chat = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
     // if (nickname !== "") {
-
+    if(message.trim().length !== 0){
     socket.emit("message", message, user.username, user.userType);
     const newMessage = {
       body: message,
@@ -91,6 +93,7 @@ const Chat = () => {
     //  } else {
     //   alert("Para enviar mensaje tiene que establecer nickname");
     //   }
+  }
   };
 
   return (
@@ -101,26 +104,27 @@ const Chat = () => {
           {storedMessages.map((message, index) => (
             <div
               key={index}
-              className={`d-flex p-3 ${
+              className={`d-flex p-1 ${
                 message.from === user.username
                   ? "justify-content-end"
                   : "justify-content-start"
               }`}
             >
               <div
-                className={`card mb-3 border-1 ${
+                className={`card mb-0 border-1  text-muted ${
                   message.from === user.username
                     ? "bg-success bg-opacity-25 "
                     : "bg-light "
                 }`}
               >
-                <div className="card-body">
-                  <strong>{message.from} </strong>
+                <div className="card-body text-muted">
+                 <small> 
                   {message.userType === "moderador" && (
                     <img src={imgMod} alt="icono de moderador" width={15} />
                   )}
-                  <br />
-                  <small>{message.message}</small>
+                      <strong>{message.from === user.username ? "Yo" : message.from}: </strong>             
+                     <span>{message.message}</span>
+                  </small>
                 </div>
               </div>
             </div>
@@ -131,20 +135,20 @@ const Chat = () => {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`d-flex p-3 ${
+              className={`d-flex p-1 ${
                 message.from === "Yo"
                   ? "justify-content-end"
                   : "justify-content-start"
               }`}
             >
               <div
-                className={`card mb-3 border-1 text-muted ${
+                className={`card mb-0 border-1  ${
                   message.from === "Yo"
                     ? "bg-success bg-opacity-25 "
                     : "bg-light "
                 }`}
               >
-                <div className="card-body text-muted">
+                <div className="card-body ">
                   {message.type === "moderador" && (
                     <img src={imgMod} alt="icono de moderador" width={15} />
                   )}

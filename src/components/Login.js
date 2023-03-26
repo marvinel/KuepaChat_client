@@ -20,7 +20,7 @@ const Login = () => {
           password: password,
         })
         .then((res) => {
-          sessionStorage.setItem("sessionToken", res.data.token);
+          localStorage.setItem("sessionToken", res.data.token);
 
           navigate("/");
         })
