@@ -8,6 +8,11 @@ Se necesita estar logueado para poder acceder al chat.
 Antes de iniciar el proyecto es necesario que el servidor que se encuentra en [Servidor](https://github.com/marvinel/KuepaChat_Server) este corriendo para el correcto funcionamiento.
 En el directorio del proyecto correr el siguiente comando :
 
+
+### `npm install`
+
+Para poder descargar todas las dependencias necesarias.\
+
 ### `npm start`
 
 Corre la aplicacion en modo desarrollo.\
