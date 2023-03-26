@@ -1,4 +1,4 @@
-# Getting Started KuepaChat Cliente
+# Getting Started KuepaChat Client
 
 Este es un proyecto ReactJs que simula un streaming con un chat a tiempo real que cuenta con cuenta con un servicio de registro e inicio de sesión.
 Se necesita estar logueado para poder acceder al chat.
