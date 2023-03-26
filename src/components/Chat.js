@@ -80,7 +80,7 @@ const Chat = () => {
       type: user.userType,
     };
     setMessages([...messages, newMessage]);
-    chatRef.current?.scrollIntoView({ behavior: "smooth" });
+    chatRef.current?.scrollIntoView({ behavior: "smooth", block: 'start', inline: 'nearest', top: 500});
     setMessage("");
 
     //Peticion HTTP por POST para guardar el mensaje
@@ -132,6 +132,7 @@ const Chat = () => {
           <small className="text-center text-muted">
             ...Mensajes Anteriores...
           </small>
+          <div>
           {messages.map((message, index) => (
             <div
               key={index}
@@ -159,8 +160,8 @@ const Chat = () => {
               </div>
             </div>
           ))}
-
-          <div ref={chatRef} />
+        <div ref={chatRef} />
+        </div>
         </Card.Body>
         <Card.Footer>
           <form onSubmit={handlerSubmit}>
