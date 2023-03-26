@@ -1,39 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    
     e.preventDefault();
     // Aquí puedes enviar los datos del registro a tu API o backend
-    
 
     try {
-        axios.post("http://localhost:4000/api/login", {
-            nickname: username,
-            password: password,
-          })
-          .then(res =>{
-           
-            console.log(res.data)
-            sessionStorage.setItem("sessionToken", res.data.token)
-            navigate("/")
-          })
-          .catch(err =>{
-            console.log(err.response.data)
-          })
-    } catch (error) {
-        console.log(error)
-    }
+      axios
+        .post("http://localhost:4000/api/login", {
+          nickname: username,
+          password: password,
+        })
+        .then((res) => {
+          sessionStorage.setItem("sessionToken", res.data.token);
 
-      
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Usuario o Contraseña Incorrecto",
+          });
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -45,7 +46,9 @@ const Login = () => {
               <h1 className="card-title text-center">Iniciar Sesión</h1>
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="username">Nombre de usuario</label>
+                  <label htmlFor="username">
+                    <strong>Nombre de Usuario</strong>
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -57,7 +60,9 @@ const Login = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Contraseña</label>
+                  <label htmlFor="password">
+                    <strong>Contraseña</strong>
+                  </label>
                   <input
                     type="password"
                     className="form-control"
@@ -74,11 +79,10 @@ const Login = () => {
                   </button>
                 </div>
               </form>
-              <div className='dropdown-menu'>
-              <div className="dropdown-divider"></div>
-              
+              <div className="dropdown-menu">
+                <div className="dropdown-divider"></div>
               </div>
-              <Link to="/register" >¿No tienes cuenta? Regístrate aquí</Link>
+              <Link to="/register">¿No tienes cuenta? Regístrate aquí</Link>
             </div>
           </div>
         </div>

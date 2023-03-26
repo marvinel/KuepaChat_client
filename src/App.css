@@ -3,6 +3,35 @@
 }
 
 #content-chat{
-  height: 450px;
+  
   overflow-y: scroll;
+  height: 500px;
+}
+
+#container{
+  margin-top: 10px;
+  
+}
+#dropdown{
+  margin-top: 10px;
+}
+.form-title{
+  color: #fd531e;
+}
+
+.form-control{
+  margin-bottom: 10px;
+}
+@media (max-width: 1180px){
+  #content-chat{
+  
+    height: 350px;
+  }
+}
+
+@media (max-width: 600px){
+  #content-chat{
+  
+    height: 500px;
+  }
 }
