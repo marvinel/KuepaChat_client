@@ -15,6 +15,5 @@ Para poder descargar todas las dependencias necesarias.\
 
 ### `npm start`
 
-Corre la aplicacion en modo desarrollo.\
-Abre [http://localhost:3000](http://localhost:3000) para verlo en tu navegador.
+Una vez ejecutado el comando abre [http://localhost:3000](http://localhost:3000) para verlo en tu navegador.
 
